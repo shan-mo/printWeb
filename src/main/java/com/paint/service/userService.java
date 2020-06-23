@@ -1,6 +1,7 @@
-package com.example.paint.service;
+package com.paint.service;
 
-import com.example.paint.pojo.po.User;
+import com.paint.pojo.Result;
+import com.paint.pojo.po.User;
 
 /**
  * 与用户相关的方法
@@ -13,7 +14,7 @@ public interface userService {
      * @param user
      * @return
      */
-    boolean login(User user);
+    Result login(User user);
 
     /**
      * 用户注册

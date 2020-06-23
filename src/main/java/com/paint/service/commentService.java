@@ -1,4 +1,4 @@
-package com.example.paint.service;
+package com.paint.service;
 
 /**
  * 评论相关的接口

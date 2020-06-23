@@ -1,4 +1,4 @@
-package com.example.paint.service;
+package com.paint.service;
 
 
 /**

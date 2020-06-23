@@ -1,7 +1,10 @@
-package com.example.paint.controller;
+package com.paint.controller;
 
-import com.example.paint.pojo.po.User;
+import com.paint.constants.ResultCode;
+import com.paint.pojo.po.User;
 import com.google.code.kaptcha.Constants;
+import com.paint.service.userService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +17,9 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class userController {
+    @Autowired
+    private userService userService;
+
 
     /**
      * 登录
@@ -29,12 +35,16 @@ public class userController {
     public String login(HttpServletRequest request, String username, String password, String aptcha) {
         HttpSession session = request.getSession();
         String codetext = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
-        if (username.equals("admin") && password.equals("123456") && aptcha.equals(codetext)) {
-            request.getSession().setAttribute("user", "success");
-            return "success";
-        } else {
-            return "fair";
+        if (aptcha.equals(codetext)) {
+            User user = new User();
+            user.setEmail(username);
+            user.setPassWord(password);
+            if (userService.login(user).getResultCode().equals(ResultCode.USER_FOUND)) {
+                request.getSession().setAttribute("user", "success");
+                return "success";
+            }
         }
+        return "fair";
     }
 
     /**
@@ -53,6 +63,7 @@ public class userController {
         System.out.println(email);
         System.out.println(passwd);
         System.out.println(repasswd);
+
         return "success";
     }
 

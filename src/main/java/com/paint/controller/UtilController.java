@@ -1,4 +1,4 @@
-package com.example.paint.controller;
+package com.paint.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;

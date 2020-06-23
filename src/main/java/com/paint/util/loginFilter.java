@@ -1,4 +1,4 @@
-package com.example.paint.util;
+package com.paint.util;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 

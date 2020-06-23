@@ -1,11 +1,10 @@
-package com.example.paint;
+package com.paint;
 
-import com.example.paint.util.loginFilter;
+import com.paint.util.loginFilter;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +18,7 @@ import java.util.Properties;
 
 @SpringBootApplication
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
+@MapperScan("com.paint.mapper")
 public class PaintApplication {
 
     public static void main(String[] args) {
