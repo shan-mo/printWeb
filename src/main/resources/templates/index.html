@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论坛首页</title>
+    <!-- 引入css文件 -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/font-aws/css/all.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- 引入js文件 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/layer/layer.js"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- 主体部分 -->
+        <div class="inner" id="top">
+            <!-- 用户栏 -->
+            <div class="user">
+                <div class="userBox">
+                    <!-- 用户头像 -->
+                    <div class="photo">
+                        <img src="image/1 (3).PNG" alt="头像">
+                    </div>
+                    <!-- 用户信息 -->
+                    <div class="userMessage">
+                        <span class="mininame">昵称</span>
+                        <span class="pid">pid</span>
+                    </div>
+                    <!-- 用户栏按钮 -->
+                    <div class="userButton">
+                        <button onclick="window.location.href='userCenter'" class="userCenter">用户中心</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 消息列表 -->
+            <div class="messageBox">
+                <div class="message" onclick="openinvitationwin()"></div>
+                <div class="message" onclick="openinvitationwin()"></div>
+                <div class="message" onclick="openinvitationwin()"></div>
+                <div class="message" onclick="openinvitationwin()"></div>
+                <div class="message" onclick="openinvitationwin()"></div>
+                <div class="message" onclick="openinvitationwin()"></div>
+                <div class="message" onclick="openinvitationwin()"></div>
+                <div class="message" onclick="openinvitationwin()"></div>
+                <!-- 分页 -->
+                <div class="pagefilter"></div>
+            </div>
+        </div>
+        <!-- 侧边栏 -->
+        <div class="right">
+            <a href="#top">
+                <div class="toTop"><i class="fas fa-angle-double-up"></i></div>
+            </a>
+            <div class="publish" onclick="openpublishwin()"><i class="fas fa-pencil-alt"></i></div>
+            <div class="flash"><i class="fas fa-redo-alt"></i></div>
+        </div>
+    </div>
+</body>
+
+</html>

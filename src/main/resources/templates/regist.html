@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绘画注册页面</title>
+    <!-- 引入css文件 -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/regist.css">
+    <!-- 引入js文件 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/regist.js"></script>
+    <script>
+        
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- 网页头部 -->
+        <div class="head">
+            <div class="title">
+                <h1>请输入注册信息</h1>
+            </div>
+        </div>
+        <!-- 网页主体 -->
+        <div class="main">
+            <div class="writeMessage">
+                <form action="">
+                    <div class="message">
+                        <span>昵称</span>
+                        <span>邮箱</span>
+                        <span>密码</span>
+                        <span>确认密码</span>
+                    </div>
+                    <div class="input">
+                        <input id="mininame" type="text">
+                        <div class="mininameMessage"><span>请输入昵称</span></div>
+                        <input id="email" type="text">
+                        <div class="emailMessage"><span>请输入邮箱</span></div>
+                        <input id="passwd" type="password">
+                        <div class="passwdMessage"><span>请输入密码</span></div>
+                        <input id="repasswd" type="password">
+                        <div class="repasswdMessage"><span>请确认密码</span></div>
+                    </div>
+
+                    <div class="button">
+                        <button type="button" onclick="registsub()">注册</button>
+                        <input type="reset" value="重置">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- 网页底部 -->
+        <div class="foot"></div>
+    </div>
+
+</body>
+
+</html>

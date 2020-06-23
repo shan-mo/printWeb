@@ -1,0 +1,26 @@
+.layui-input {
+    width: 55%;
+}
+
+.layui-textarea {
+    width: 60%;
+    resize: none;
+}
+
+#texttitle {
+    display: block;
+    width: 60%;
+}
+
+.inner {
+    margin-top: 50px;
+    margin-left: 200px;
+}
+
+.imageUpload {
+    margin-top: 60px;
+}
+
+#showbox {
+    width: 80%;
+}

@@ -1,0 +1,81 @@
+/* 
+    窗口整体
+*/
+.wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* 
+    窗口中部
+*/
+.inner {
+    width: 60%;
+    height: 100%;
+    margin: auto;
+    padding-top: 20px;
+}
+
+/* 
+    发帖者用户信息
+*/
+.userMessage{
+    height: 10%;
+    border: 1px solid rgb(204, 204, 204);
+}
+
+/* 
+    标题
+*/
+.invitationTitle {
+    height: 10%;
+    border: 1px solid rgb(204, 204, 204);
+}
+
+.imagelist,
+.invitationMessage,
+.commentList {
+    border: 1px solid rgb(204, 204, 204);
+}
+
+
+/* 
+    图片列表
+*/
+.imagelist img {
+    width: 50%;
+}
+
+
+
+/* 
+    点赞，评论工具栏
+*/
+.utilBox {
+    height: 10%;
+    border: 1px solid rgb(204, 204, 204);
+}
+
+/* 
+    评论列表
+*/
+.commentList{
+    margin-bottom: 20px;
+}
+
+.commentList ul{
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border: 1px solid rgb(204, 204, 204);
+}
+
+.commentList ul li{
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    border: 1px solid rgb(204, 204, 204);
+}

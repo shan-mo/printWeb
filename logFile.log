@@ -1,0 +1,15 @@
+[INFO ] 2020-06-15 09:39:02.250 com.example.paint.PaintApplication logStarting 55 main Starting PaintApplication on LAPTOP-JISVNMME with PID 15660 (G:\project\paintWeb\target\classes started by Lenovo in G:\project\paintWeb)
+[INFO ] 2020-06-15 09:39:02.253 com.example.paint.PaintApplication logStartupProfileInfo 651 main No active profile set, falling back to default profiles: default
+[INFO ] 2020-06-15 09:39:03.189 org.springframework.boot.web.embedded.tomcat.TomcatWebServer initialize 108 main Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2020-06-15 09:39:03.197 org.apache.coyote.http11.Http11NioProtocol log 173 main Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-06-15 09:39:03.198 org.apache.catalina.core.StandardService log 173 main Starting service [Tomcat]
+[INFO ] 2020-06-15 09:39:03.295 org.apache.catalina.core.StandardEngine log 173 main Starting Servlet engine: [Apache Tomcat/9.0.35]
+[INFO ] 2020-06-15 09:39:03.424 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] log 173 main Initializing Spring embedded WebApplicationContext
+[INFO ] 2020-06-15 09:39:03.424 org.springframework.web.context.ContextLoader prepareWebApplicationContext 284 main Root WebApplicationContext: initialization completed in 1123 ms
+[WARN ] 2020-06-15 09:39:03.725 org.thymeleaf.templatemode.TemplateMode parse 150 main [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+[INFO ] 2020-06-15 09:39:03.751 org.apache.coyote.http11.Http11NioProtocol log 173 main Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2020-06-15 09:39:03.778 org.springframework.boot.web.embedded.tomcat.TomcatWebServer start 220 main Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2020-06-15 09:39:03.789 com.example.paint.PaintApplication logStarted 61 main Started PaintApplication in 1.927 seconds (JVM running for 4.24)
+[INFO ] 2020-06-15 09:39:10.569 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] log 173 http-nio-8080-exec-2 Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2020-06-15 09:39:10.570 org.springframework.web.servlet.DispatcherServlet initServletBean 525 http-nio-8080-exec-2 Initializing Servlet 'dispatcherServlet'
+[INFO ] 2020-06-15 09:39:10.577 org.springframework.web.servlet.DispatcherServlet initServletBean 547 http-nio-8080-exec-2 Completed initialization in 7 ms

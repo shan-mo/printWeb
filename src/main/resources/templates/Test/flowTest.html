@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+    <script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../../static/js/layui/layui.all.js"></script>
+    <style>
+        ul {
+            width: 200px;
+            height: 120px;
+            overflow: auto;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>信息流 - 滚动加载</legend>
+</fieldset>
+
+<ul class="flow-default" id="LAY_demo1"></ul>
+</body>
+<script>
+    layui.use('flow', function () {
+        var flow = layui.flow;
+
+        flow.load({
+            elem: '#LAY_demo1',
+            scrollElem: '#LAY_demo1',
+            isAuto: true,
+            end: "已经到底了",
+            done: function (page, next) {
+                var lis = [];
+                setTimeout(function(){
+                    $.ajax({
+                        url: "/flow",
+                        type: "post",
+                        data: {
+                            page: page
+                        },
+                        success: function (data) {
+                            for (var i = 0; i < data.length - 1; i++) {
+                                lis.push('<li>' + data[i + 1] + '</li>')
+                            }
+                            next(lis.join(''), page < data[0]);
+                        }
+                    })
+                },500)
+            }
+        });
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="js/layui/css/layui.css">
+    <link rel="stylesheet" href="css/publishWindow.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/layui/layui.all.js"></script>
+</head>
+
+<body>
+    <div class="warpper">
+        <div class="inner">
+            <form class="layui-form layui-form-pane" action="">
+                <!-- 帖子标题 -->
+                <div class="invitationTitle">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="title" name="title" autocomplete="off" maxlength="20"
+                                placeholder="请输入标题，最多20个字符" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <!-- 帖子正文 -->
+                <div class="invitationMessage">
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label" id="texttitle">正文</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="请输入内容，最多200个字符" class="layui-textarea" maxlength="200" rows="5"
+                                id="textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- 图片上传 -->
+            <div class="imageUpload">
+                <button type="button" class="layui-btn" id="fileupload">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <button type="button" class="layui-btn" id="publish">点击发布</button>
+                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;" id="showbox">
+                    预览图(最多5张图片,点击可删除图片)：
+                    <div class="layui-upload-list" id="showImage"></div>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/publishWindow.js"></script>
+
+</html>

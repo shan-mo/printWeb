@@ -1,0 +1,152 @@
+/* 
+    网页头部样式设置
+*/
+.head {
+    height: 15%;
+}
+
+.title {
+    width: 30%;
+    height: 100%;
+    margin: auto;
+}
+
+.title h1 {
+    font-size: 50px;
+    text-align: center;
+    line-height: 100px;
+}
+
+
+/* 
+    网页主体设置
+*/
+.centerbody {
+    height: 70%;
+}
+
+.leftdiv {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.imagechange {
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.imagechange img {
+    width: 100%;
+}
+
+.rightdiv {
+    float: right;
+    width: 50%;
+    height: 100%;
+}
+
+.loginbox {
+    width: 60%;
+    height: 60%;
+    margin-top: 150px;
+    margin-left: 220px;
+    background-color: aliceblue;
+}
+
+.logintitle {
+    display: block;
+    font-size: 35px;
+    text-align: center;
+}
+
+.loginmessage {
+    float: left;
+    width: 35%;
+    height: 80%;
+}
+
+.loginmessage span {
+    display: block;
+    float: right;
+    margin-left: 40px;
+    margin-top: 26px;
+}
+
+.loginmessage span:first-child {
+    display: block;
+    float: right;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.loginmessage span:last-child {
+    display: block;
+    float: right;
+    margin-left: 40px;
+    margin-top: 33px;
+}
+
+.logininput {
+    float: left;
+    width: 60%;
+    height: 80%;
+}
+
+.logininput input {
+    float: left;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.logininput div{
+    visibility: hidden;
+    font-size: 8px;
+    color: red;
+    float: left;
+    margin-left: 20px;
+}
+
+.logininput .aptchaImage{
+    visibility: visible;
+    display: block;
+    height: 50px;
+}
+
+.logininput img {
+    float: left;
+    width: 120px;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.loginbutton {
+    width: 100%;
+    height: 20%;
+    float: left;
+    margin-top: 20px;
+}
+
+
+
+.loginbutton div{
+    display: block;
+    width: 30%;
+    height: 60%;
+    margin-left: 50px;
+    float: left;
+    text-align: center;
+    text-decoration-line: none;
+}
+
+
+
+
+/* 
+    网页脚样式设置
+*/
+.foot {
+    height: 15%;
+}

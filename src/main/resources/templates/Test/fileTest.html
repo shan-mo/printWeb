@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script src="layui/layui.all.js"></script>
+
+</head>
+<body>
+
+<button type="button" class="layui-btn" id="fileupload">
+    <i class="layui-icon">&#xe67c;</i>上传图片
+</button>
+<button type="button" class="layui-btn" id="test9">开始上传</button>
+<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+    预览图：
+    <div class="layui-upload-list" id="demo2"></div>
+</blockquote>
+</body>
+<script>
+    var files;
+    var uploadInst = layui.upload.render({
+        elem: '#fileupload',
+        auto: false,
+        choose: function (obj) {
+            files = obj.pushFile(); //将每次选择的文件追加到文件队列
+            obj.preview(function (index, file, result) {
+                $('#demo2').append('<img style="width: 300px" src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+            });
+        }
+    });
+
+    $("#test9").click(function () {
+        var form = new FormData();
+        for (let i in files) {
+            form.append("file[]", files[i]);
+        }
+        $.ajax({
+            url: "/upload",
+            type: "post",
+            contentType: false,
+            processData: false,
+            async: true,
+            data: form,
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                console.log(data);
+            }
+        });
+    })
+
+</script>
+</html>

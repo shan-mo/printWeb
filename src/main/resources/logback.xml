@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!--
+        定义日志的输出格式
+        %-5level                        日志级别，-5表示占5个字符，向右对齐
+        %d{yyyy-MM-dd HH:mm:ss.SSS}     日期,秒后面的是毫秒，这个格式可以自己定义
+        %c                              类完整名
+        %M                              方法名
+        %L                              行号
+        %thread                         线程名称
+        %m或%msg                        日志信息
+        %n                              换行
+
+        格式中[]中的格式表示高亮显示
+    -->
+    <property name="pattern" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c %M %L %thread %m%n"></property>
+
+    <!--
+        控制台日志输出
+    -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logFile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="console"></appender-ref>
+<!--        <appender-ref ref="file"></appender-ref>-->
+    </root>
+</configuration>

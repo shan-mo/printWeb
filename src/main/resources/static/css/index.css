@@ -1,0 +1,154 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url(../image/747727.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+/* 主体部分 */
+.inner {
+    width: 900px;
+    height: 720px;
+    margin: auto;
+}
+
+
+/* 
+    用户信息栏
+*/
+/* 用户信息栏，解决固定布局造成的高度塌陷 */
+.user {
+    width: 100%;
+    height: 20%;
+}
+
+/* 固定布局的真正用户信息栏 */
+.userBox {
+    position: fixed;
+    width: 900px;
+    height: 144px;
+    background-color: aquamarine;
+}
+
+.photo {
+    float: left;
+    width: 10%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.photo img {
+    height: 100%;
+}
+
+.userMessage {
+    float: left;
+    width: 90%;
+    height: 50%;
+}
+
+.userMessage span {
+    display: block;
+    margin-left: 20px;
+    margin-top: 6px;
+}
+
+.userButton {
+    display: flex;
+    float: left;
+    width: 90%;
+    height: 50%;
+}
+
+.userButton button {
+    height: 50%;
+    margin: auto;
+    margin-left: 20px;
+}
+
+
+/* 
+    消息栏，主体部分
+*/
+.messageBox {
+    margin: auto;
+    height: 80%;
+    background-color: rgba(240, 248, 255, .3);
+}
+
+.message {
+    width: 100%;
+    height: 30%;
+    margin: auto;
+    margin-top: 5px;
+    background-color: rgba(245, 245, 220, .9);
+}
+
+.message:hover{
+    background-color: rgba(245, 245, 220, .8);
+}
+
+/* 
+分页显示栏
+*/
+.pagefilter{
+    width: 100%;
+    height: 10%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    background-color: rgba(240, 255, 255, .9);
+}
+
+
+/* 
+    侧边栏，，固定布局
+*/
+.right {
+    position: fixed;
+    width: 60px;
+    height: 180px;
+    top: 20%;
+    right: 15%;
+    z-index: 999;
+}
+
+.right div {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 7px;
+    border-radius: 25px;
+    line-height: 50px;
+    font-size: 35px;
+    text-align: center;
+}
+
+.toTop {
+    background-color: aqua;
+}
+
+.publish {
+    background-color: azure;
+}
+
+.right div:hover{
+    width: 55px;
+    height: 55px;
+    border-radius: 27px;
+    line-height: 55px;
+}
+
+.flash {
+    background-color: springgreen;
+}
