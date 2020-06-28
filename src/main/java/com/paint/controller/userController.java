@@ -1,9 +1,16 @@
 package com.paint.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPObject;
 import com.paint.constants.ResultCode;
+import com.paint.pojo.Result;
 import com.paint.pojo.po.User;
 import com.google.code.kaptcha.Constants;
 import com.paint.service.userService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +27,7 @@ public class userController {
     @Autowired
     private userService userService;
 
+    private final Logger logger = LoggerFactory.getLogger(userController.class);
 
     /**
      * 登录
@@ -30,21 +38,29 @@ public class userController {
      * @param aptcha
      * @return
      */
-    @RequestMapping("login")
+    @RequestMapping(value = "login", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String login(HttpServletRequest request, String username, String password, String aptcha) {
+        Result result = new Result();
+        User user = null;
         HttpSession session = request.getSession();
         String codetext = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
         if (aptcha.equals(codetext)) {
-            User user = new User();
+            user = new User();
             user.setEmail(username);
             user.setPassWord(password);
-            if (userService.login(user).getResultCode().equals(ResultCode.USER_FOUND)) {
-                request.getSession().setAttribute("user", "success");
-                return "success";
+            result = userService.login(user);
+            if (result.getResultCode().equals(ResultCode.USER_FOUND)) {
+                request.getSession().setAttribute("user", result.getResult());
+            } else {
+                logger.info("[" + result.getResultCode() + "]" + result.getResultMessage());
             }
+        } else {
+            result.setResultCode(ResultCode.APTCHA_ERR);
+            result.setResultMessage(ResultCode.APTCHA_ERR_MSG);
+            logger.info("[" + result.getResultCode() + "]" + result.getResultMessage());
         }
-        return "fair";
+        return JSON.toJSONString(result);
     }
 
     /**
@@ -53,18 +69,14 @@ public class userController {
      * @param mininame
      * @param email
      * @param passwd
-     * @param repasswd
      * @return
      */
-    @RequestMapping("/regist")
+    @RequestMapping(value = "/regist", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String regist(String mininame, String email, String passwd, String repasswd) {
-        System.out.println(mininame);
-        System.out.println(email);
-        System.out.println(passwd);
-        System.out.println(repasswd);
-
-        return "success";
+    public String regist(String mininame, String email, String passwd) {
+        User user = new User(mininame, email, passwd);
+        Result result = userService.regist(user);
+        return JSON.toJSONString(result);
     }
 
     /**
@@ -74,8 +86,9 @@ public class userController {
      * @return
      */
     @RequestMapping("loginout")
-    public String loginout(User user) {
-        return "";
+    public String loginout(HttpServletRequest request, User user) {
+        request.getSession().removeAttribute(user.getEmail());
+        return "initlogin";
     }
 
     /**
@@ -99,6 +112,4 @@ public class userController {
     public String userMessageUpdate(User user) {
         return "";
     }
-
-
 }

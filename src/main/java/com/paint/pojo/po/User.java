@@ -1,9 +1,12 @@
 package com.paint.pojo.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("p_user")
 public class User {
+    @TableId(type = IdType.AUTO)
     private Long id;
     private String miniName;
     private String email;
@@ -11,6 +14,17 @@ public class User {
     private Integer age;
     private Integer state;
     private Integer userType;
+
+    public User() {
+
+    }
+
+    public User(String miniName, String email, String passWord) {
+        this.miniName = miniName;
+        this.email = email;
+        this.passWord = passWord;
+    }
+
 
     public Long getId() {
         return id;

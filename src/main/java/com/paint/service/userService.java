@@ -22,7 +22,7 @@ public interface userService {
      * @param user
      * @return
      */
-    boolean regist(User user);
+    Result regist(User user);
 
     /**
      * 用户登出
@@ -52,4 +52,13 @@ public interface userService {
      * 修改用户的状态
      */
     void updateUserState();
+
+    /**
+     * 用户注册时的验证步骤
+     * 主要用于验证邮箱是否被注册
+     * 和昵称是否被使用
+     *
+     * @return
+     */
+    Result rigiestcheck(String type, String data);
 }

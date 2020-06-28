@@ -1,12 +1,16 @@
 package com.paint.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
+import com.paint.mapper.UserMapper;
+import com.paint.service.userService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.imageio.ImageIO;
@@ -25,6 +29,8 @@ import java.io.IOException;
 public class UtilController {
     @Autowired
     private Producer captchaproducer;
+    @Autowired
+    private userService userService;
 
     private Logger logger = LoggerFactory.getLogger(UtilController.class);
 
@@ -147,5 +153,11 @@ public class UtilController {
             out.close();
         }
         return null;
+    }
+
+    @RequestMapping(value = "/registcheck",produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String checkMinuName(String type, String message) {
+        return JSON.toJSONString(userService.rigiestcheck(type, message));
     }
 }

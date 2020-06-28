@@ -1,5 +1,6 @@
 package com.paint.serviceImpl;
 
+import com.paint.constants.ResultCode;
 import com.paint.dao.userDao;
 import com.paint.pojo.Result;
 import com.paint.pojo.po.User;
@@ -18,8 +19,11 @@ public class userServiceImpl implements userService {
         Result result = new Result();
         try {
             result = userDao.getUserinDB(user);
-            user = (User) result.getResult();
-            return result;
+            User DBuser = (User) result.getResult();
+            if (DBuser.getPassWord().equals(user.getPassWord())) {
+                return result;
+            }
+            throw new UserException(ResultCode.PASSWORD_ERR, ResultCode.PASSWORD_ERR_MSG);
         } catch (UserException e) {
             result.setResultCode(e.getErrCode());
             result.setResultMessage(e.getMessage());
@@ -28,8 +32,8 @@ public class userServiceImpl implements userService {
     }
 
     @Override
-    public boolean regist(User user) {
-        return false;
+    public Result regist(User user) {
+        return userDao.insertUser(user);
     }
 
     @Override
@@ -50,5 +54,14 @@ public class userServiceImpl implements userService {
     @Override
     public void updateUserState() {
 
+    }
+
+    @Override
+    public Result rigiestcheck(String type, String data) {
+        if (type.equals("mininame")) {
+            return userDao.selectForMiniName(data);
+        }else {
+            return userDao.selectForEmail(data);
+        }
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -19,6 +20,7 @@ import java.util.Properties;
 @SpringBootApplication
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 @MapperScan("com.paint.mapper")
+@PropertySource("classpath:jdbc.properties")
 public class PaintApplication {
 
     public static void main(String[] args) {
@@ -33,7 +35,7 @@ public class PaintApplication {
         @Override
         protected void addInterceptors(InterceptorRegistry registry) {
             registry.addInterceptor(new loginFilter()).addPathPatterns("/**")
-                    .excludePathPatterns("/initLogin", "/login", "/gotoregist", "/regist", "/getcha", "/image/**", "/js/**", "/layui/**", "/css/**");
+                    .excludePathPatterns("/initLogin", "/login", "/gotoregist", "/regist", "/registcheck", "/getcha", "/image/**", "/js/**", "/layui/**", "/css/**");
             super.addInterceptors(registry);
         }
 

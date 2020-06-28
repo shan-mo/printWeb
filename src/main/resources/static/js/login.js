@@ -43,10 +43,13 @@ function checklogin() {
                 aptcha: aptchaText
             },
             success: function (data) {
-                if (data == "success") {
+                var result = JSON.parse(data);
+                if (result.resultCode == "1") {
                     window.location.href = "index";
                 } else {
-                    alert("用户名或密码错误");
+                    alert(result.resultMessage);
+                    console.log(result);
+                    $("#aptcha").attr("src", "http://localhost:8080/getcha");
                 }
             },
             error: function () {
@@ -54,5 +57,8 @@ function checklogin() {
             }
         })
     }
+}
+function change() {
+    $("#aptcha").attr("src", "http://localhost:8080/getcha");
 }
 
