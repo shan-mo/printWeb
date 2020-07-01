@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -21,6 +22,7 @@ import java.util.Properties;
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 @MapperScan("com.paint.mapper")
 @PropertySource("classpath:jdbc.properties")
+@EnableTransactionManagement
 public class PaintApplication {
 
     public static void main(String[] args) {

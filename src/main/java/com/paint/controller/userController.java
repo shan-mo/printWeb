@@ -50,13 +50,13 @@ public class userController {
             user.setEmail(username);
             user.setPassWord(password);
             result = userService.login(user);
-            if (result.getResultCode().equals(ResultCode.USER_FOUND)) {
+            if (result.getResultCode().equals(ResultCode.SUCCESS_CODE)) {
                 request.getSession().setAttribute("user", result.getResult());
             } else {
                 logger.info("[" + result.getResultCode() + "]" + result.getResultMessage());
             }
         } else {
-            result.setResultCode(ResultCode.APTCHA_ERR);
+            result.setResultCode(ResultCode.ERROR_CODE);
             result.setResultMessage(ResultCode.APTCHA_ERR_MSG);
             logger.info("[" + result.getResultCode() + "]" + result.getResultMessage());
         }

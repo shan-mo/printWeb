@@ -1,12 +1,15 @@
 package com.paint.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.paint.pojo.po.Invitation;
+import com.paint.service.invitationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
 /**
@@ -15,30 +18,20 @@ import java.io.File;
 @Controller
 public class invitationController {
 
+    @Autowired
+    private invitationService invitationService;
+
     /**
      * 发布帖子
      *
      * @param files
-     * @param request
      * @return
      */
-    @RequestMapping("/publishinvation")
+    @RequestMapping(value = "/publishinvation", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String publish(@RequestParam(value = "file[]", required = false) MultipartFile[] files, HttpServletRequest request) {
-        System.out.println(files.length);
-        String filepath = "G:/";
-        try {
-            for (MultipartFile file : files) {
-                String fileName = file.getOriginalFilename();
-                System.out.println(fileName);
-                File dest = new File(filepath + fileName);
-                file.transferTo(dest);
-            }
-            return "success";
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
-        return "error";
+    public String publish(@RequestParam(value = "file[]", required = false) MultipartFile[] files, @RequestParam(value = "title") String title, @RequestParam(value = "textarea") String textarea) {
+        Invitation invitation = new Invitation(title, textarea);
+        return JSON.toJSONString(invitationService.publishInvitation(invitation, files));
     }
 
 }

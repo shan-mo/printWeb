@@ -23,7 +23,7 @@ public class userServiceImpl implements userService {
             if (DBuser.getPassWord().equals(user.getPassWord())) {
                 return result;
             }
-            throw new UserException(ResultCode.PASSWORD_ERR, ResultCode.PASSWORD_ERR_MSG);
+            throw new UserException(ResultCode.ERROR_CODE, ResultCode.PASSWORD_ERR_MSG);
         } catch (UserException e) {
             result.setResultCode(e.getErrCode());
             result.setResultMessage(e.getMessage());

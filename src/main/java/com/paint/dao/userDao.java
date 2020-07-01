@@ -19,10 +19,10 @@ public class userDao {
     public Result getUserinDB(User user) throws UserException {
         Result result = new Result();
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.eq("email", user.getEmail());
-        Optional.ofNullable(user = userMapper.selectOne(wrapper)).orElseThrow(() -> new UserException(ResultCode.USER_NOT_FOUND, ResultCode.USER_NOT_FOUND_MSG));
+        wrapper.eq("email", user.getEmail()).eq("state", "1");
+        Optional.ofNullable(user = userMapper.selectOne(wrapper)).orElseThrow(() -> new UserException(ResultCode.ERROR_CODE, ResultCode.USER_NOT_FOUND_MSG));
         result.setResult(user);
-        result.setResultCode(ResultCode.USER_FOUND);
+        result.setResultCode(ResultCode.SUCCESS_CODE);
         result.setResultMessage(ResultCode.USER_FOUND_MSG);
         return result;
     }
@@ -31,10 +31,10 @@ public class userDao {
         Result result = new Result();
         int i = userMapper.insert(user);
         if (i == 1) {
-            result.setResultCode(ResultCode.USER_INSERT_SUCCESS);
+            result.setResultCode(ResultCode.SUCCESS_CODE);
             result.setResultMessage(ResultCode.USER_INSERT_SUCCESS_MSG);
         } else {
-            result.setResultCode(ResultCode.USER_INSERT_FAIR);
+            result.setResultCode(ResultCode.ERROR_CODE);
             result.setResultMessage(ResultCode.USER_INSERT_FAIR_MSG);
         }
         return result;
@@ -46,10 +46,10 @@ public class userDao {
         wrapper.eq("mini_name", mininame);
         Optional<User> user = Optional.ofNullable(userMapper.selectOne(wrapper));
         if (user.isPresent()) {
-            result.setResultCode(ResultCode.USER_INSERT_FAIR);
+            result.setResultCode(ResultCode.ERROR_CODE);
             result.setResultMessage(ResultCode.USER_MININAME_USED_MSG);
         } else {
-            result.setResultCode(ResultCode.USER_INSERT_SUCCESS);
+            result.setResultCode(ResultCode.SUCCESS_CODE);
         }
         return result;
     }
@@ -60,10 +60,10 @@ public class userDao {
         wrapper.eq("email", email);
         Optional<User> user = Optional.ofNullable(userMapper.selectOne(wrapper));
         if (user.isPresent()) {
-            result.setResultCode(ResultCode.USER_INSERT_FAIR);
+            result.setResultCode(ResultCode.ERROR_CODE);
             result.setResultMessage(ResultCode.USER_EMAIL_USED_MSG);
         } else {
-            result.setResultCode(ResultCode.USER_INSERT_SUCCESS);
+            result.setResultCode(ResultCode.SUCCESS_CODE);
         }
         return result;
     }

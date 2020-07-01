@@ -33,6 +33,7 @@ var uploadInst = layui.upload.render({
     }
 });
 
+//真正上传的逻辑，上面那个方法只是用来封装图片的
 $("#publish").click(function () {
     var form = new FormData();
     for (let i in files) {
@@ -48,6 +49,13 @@ $("#publish").click(function () {
         async: true,
         data: form,
         success: function (data) {
+            var jsondata = typeof data == 'string' ? JSON.parse(data) : data;
+            var closebutton = false;
+            var message = jsondata.resultMessage;
+            var code = jsondata.resultCode;
+            if (code == "-1") {
+                closebutton = true;
+            }
             layer.open({
                 type: 0,
                 resize: false, //静止改变窗口大小
@@ -56,14 +64,11 @@ $("#publish").click(function () {
                 closeBtn: 0, //取消关闭按钮
                 move: false, //禁止移动弹窗
                 title: false, //取消弹出层的标题
-                btn: false,//取消确认按钮，让确认框不能关闭
-                content: "发布成功",
+                btn: closebutton,//取消确认按钮，让确认框不能关闭
+                content: message,
                 end: function () {
                 }
-            })
-        },
-        error: function () {
-            console.log(data);
+            });
         }
     });
 })
