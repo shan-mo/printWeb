@@ -39,13 +39,15 @@ public class pictureUpload {
      * @param url
      * @return
      */
-    public static Result upload(Result result, MultipartFile[] pictures, String url) {
+    public static Result upload(Result result, MultipartFile[] pictures, String prefixName) {
         try {
             for (MultipartFile picture : pictures) {
                 String fileName = picture.getOriginalFilename().replaceAll(" ", "").trim();
-                File dest = new File(Constants.PICTURE_HOME + url + fileName);
+                File dest = new File(Constants.PICTURE_HOME + prefixName + fileName);
                 picture.transferTo(dest);
             }
+            result.setResultCode(ResultCode.SUCCESS_CODE);
+            result.setResultMessage(ResultCode.INVITATION_INSERT_SUCCESS);
             return result;
         } catch (IOException e) {
             result.setResultCode(ResultCode.ERROR_CODE);

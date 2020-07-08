@@ -1,6 +1,7 @@
 package com.paint.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.paint.pojo.Result;
 import com.paint.pojo.po.Invitation;
 import com.paint.service.invitationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,14 @@ public class invitationController {
     public String publish(@RequestParam(value = "file[]", required = false) MultipartFile[] files, @RequestParam(value = "title") String title, @RequestParam(value = "textarea") String textarea) {
         Invitation invitation = new Invitation(title, textarea);
         return JSON.toJSONString(invitationService.publishInvitation(invitation, files));
+    }
+
+    @RequestMapping(value = "/getinvitationlist", produces = "application/json ; charset=utf-8")
+    @ResponseBody
+    public String getInvitationList(@RequestParam("page") String page, @RequestParam("createDate") String firstcreateDate) {
+        Result result = new Result();
+        invitationService.getInvitationList(result, page, firstcreateDate);
+        return JSON.toJSONString(result);
     }
 
 }

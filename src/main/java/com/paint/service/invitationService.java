@@ -15,7 +15,7 @@ public interface invitationService {
     /**
      * 浏览帖子列表
      */
-    void getInvitationList();
+    Result getInvitationList(Result result, String page, String firstcreateDate);
 
     /**
      * 发布帖子

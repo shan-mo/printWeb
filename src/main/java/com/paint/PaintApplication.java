@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Properties;
 
@@ -29,6 +30,7 @@ public class PaintApplication {
         SpringApplication.run(PaintApplication.class, args);
     }
 
+
     /**
      * 路径拦截器配置
      */
@@ -36,8 +38,9 @@ public class PaintApplication {
     public class InterceptorConfig extends WebMvcConfigurationSupport {
         @Override
         protected void addInterceptors(InterceptorRegistry registry) {
+            //注册页面放行url
             registry.addInterceptor(new loginFilter()).addPathPatterns("/**")
-                    .excludePathPatterns("/initLogin", "/login", "/gotoregist", "/regist", "/registcheck", "/getcha", "/image/**", "/js/**", "/layui/**", "/css/**");
+                    .excludePathPatterns("/initLogin", "/login", "/gotoregist", "/regist", "/registcheck", "/getcha", "/image/**", "/img/**", "/js/**", "/layui/**", "/css/**");
             super.addInterceptors(registry);
         }
 
@@ -48,6 +51,7 @@ public class PaintApplication {
             registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
             registry.addResourceHandler("/layui/**").addResourceLocations("classpath:/static/js/layui/");
             registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
+            registry.addResourceHandler("/img/**").addResourceLocations("file:G:/picture/");
             super.addResourceHandlers(registry);
         }
     }

@@ -39,37 +39,53 @@ $("#publish").click(function () {
     for (let i in files) {
         form.append("file[]", files[i]);
     }
-    form.append("title", $.trim($("#title").val()));
-    form.append("textarea", $.trim($("#textarea").val()));
-    $.ajax({
-        url: "/publishinvation",
-        type: "post",
-        contentType: false,
-        processData: false,
-        async: true,
-        data: form,
-        success: function (data) {
-            var jsondata = typeof data == 'string' ? JSON.parse(data) : data;
-            var closebutton = false;
-            var message = jsondata.resultMessage;
-            var code = jsondata.resultCode;
-            if (code == "-1") {
-                closebutton = true;
-            }
-            layer.open({
-                type: 0,
-                resize: false, //静止改变窗口大小
-                scrollbar: false, //禁止背景页面滚动
-                area: ['30%', '40%'], //宽高
-                closeBtn: 0, //取消关闭按钮
-                move: false, //禁止移动弹窗
-                title: false, //取消弹出层的标题
-                btn: closebutton,//取消确认按钮，让确认框不能关闭
-                content: message,
-                end: function () {
+    if ($.trim($("#title").val()) != "") {
+        form.append("title", $.trim($("#title").val()));
+        form.append("textarea", $.trim($("#textarea").val()));
+        $.ajax({
+            url: "/publishinvation",
+            type: "post",
+            contentType: false,
+            processData: false,
+            async: true,
+            data: form,
+            success: function (data) {
+                var jsondata = typeof data == 'string' ? JSON.parse(data) : data;
+                var closebutton = false;
+                var message = jsondata.resultMessage;
+                var code = jsondata.resultCode;
+                if (code == "-1") {
+                    closebutton = '重试一下';
                 }
-            });
-        }
-    });
+                layer.open({
+                    type: 0,
+                    resize: false, //静止改变窗口大小
+                    scrollbar: false, //禁止背景页面滚动
+                    area: ['30%', '40%'], //宽高
+                    closeBtn: 0, //取消关闭按钮
+                    move: false, //禁止移动弹窗
+                    title: false, //取消弹出层的标题
+                    btn: closebutton,//取消确认按钮，让确认框不能关闭
+                    content: message,
+                    end: function () {
+                    }
+                });
+            }
+        });
+    } else {
+        layer.open({
+            type: 0,
+            resize: false, //静止改变窗口大小
+            scrollbar: false, //禁止背景页面滚动
+            area: ['30%', '40%'], //宽高
+            closeBtn: 0, //取消关闭按钮
+            move: false, //禁止移动弹窗
+            title: false, //取消弹出层的标题
+            btn: '再改改',//取消确认按钮，让确认框不能关闭
+            content: "至少得有个标题吧",
+            end: function () {
+            }
+        });
+    }
 })
 

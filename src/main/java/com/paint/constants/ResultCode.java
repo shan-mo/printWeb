@@ -17,6 +17,9 @@ public class ResultCode {
     public static final String USER_EMAIL_USED_MSG = "该邮箱已被注册";
     public static final String USER_MININAME_USED_MSG = "该昵称已被注册";
 
+    public static final String INVITATION_SELECT_SUCCESS = "获取帖子";
+    public static final String INVITATION_SELECT_ERROR = "获取帖子失败";
+
     public static final String INVITATION_INSERT_SUCCESS = "帖子发布成功";
     public static final String INVITATION_INSERT_ERR_MSG = "帖子发布失败";
     public static final String PICTURE_UPLOAD_ERR_MSG = "图片上传失败";

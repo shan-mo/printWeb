@@ -2,6 +2,7 @@ package com.paint.serviceImpl;
 
 import com.paint.constants.Constants;
 import com.paint.dao.invitationDao;
+import com.paint.pojo.PageModel;
 import com.paint.pojo.Result;
 import com.paint.pojo.po.Invitation;
 import com.paint.service.invitationService;
@@ -19,9 +20,23 @@ public class invitationServiceImpl implements invitationService {
     private invitationDao invitationDao;
 
     @Override
-    public void getInvitationList() {
+    public Result getInvitationList(Result result, String page, String firstcreateDate) {
+        // 分页参数设置
+        PageModel pageModel = new PageModel();
+        Integer pageNum = Integer.parseInt(page);
+        pageModel.setStart((pageNum - 1) * pageModel.getPageSize());
+
+        // 分页功能，为第一页时
+        if (firstcreateDate.equals(Constants.FIRST_PAGE)) {
+            return invitationDao.selectInvitationList(result, pageModel);
+        }
+
+        // 分页功能，不为第一页时
+        pageModel.setCreateDate(firstcreateDate);
+        return invitationDao.selectInvitationList(result, pageModel);
 
     }
+
 
     @Override
     public Result publishInvitation(Invitation invitation, MultipartFile[] pictures) {
