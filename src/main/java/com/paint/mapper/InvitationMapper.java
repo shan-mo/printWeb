@@ -3,7 +3,6 @@ package com.paint.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.paint.pojo.PageModel;
 import com.paint.pojo.po.Invitation;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

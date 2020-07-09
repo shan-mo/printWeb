@@ -5,10 +5,13 @@ import com.paint.constants.Constants;
 import com.paint.constants.ResultCode;
 import com.paint.mapper.InvitationMapper;
 import com.paint.mapper.PictureMapper;
+import com.paint.mapper.UserInvitationMapper;
 import com.paint.pojo.PageModel;
 import com.paint.pojo.Result;
 import com.paint.pojo.po.Invitation;
 import com.paint.pojo.po.Picture;
+import com.paint.pojo.po.User;
+import com.paint.pojo.po.UserInvitation;
 import com.paint.pojo.vo.InvitationVo;
 import com.paint.util.exception.InvitationException;
 import com.paint.util.pictureUpload;
@@ -25,9 +28,11 @@ public class invitationDao {
     private InvitationMapper invitationMapper;
     @Autowired
     private PictureMapper pictureMapper;
+    @Autowired
+    private UserInvitationMapper userInvitationMapper;
 
     @Transactional
-    public Result insertInvitation(Invitation invitation, MultipartFile[] pictures) throws InvitationException {
+    public Result insertInvitation(User user, Invitation invitation, MultipartFile[] pictures) throws InvitationException {
         Result result = new Result();
         String datestemp = Constants.DATE_FORMAT_SIMPLE.format(new Date());
         //插入帖子文字部分到数据库
@@ -49,9 +54,13 @@ public class invitationDao {
         if (pictureSize != 0)
             throw new InvitationException(ResultCode.ERROR_CODE, ResultCode.INVITATION_INSERT_ERR_MSG);
 
+        //将用户和帖子连接起来
+        userInvitationMapper.insert(new UserInvitation(user.getId(), invitation.getId()));
 
-        //当前两步没有问题，将图片保存到磁盘中
+
+        //当前三步没有问题，将图片保存到磁盘中
         pictureUpload.upload(result, pictures, invitation.getId() + datestemp);
+
 
         if (!result.getResultCode().equals(ResultCode.SUCCESS_CODE))
             throw new InvitationException(ResultCode.ERROR_CODE, ResultCode.INVITATION_INSERT_ERR_MSG);
@@ -76,10 +85,6 @@ public class invitationDao {
 
         }
 
-//        QueryWrapper invitationWrapper = new QueryWrapper();
-//        invitationWrapper.eq("state", 1);
-//        List<Invitation> invitations = invitationMapper.selectList(invitationWrapper);
-
         invitations.forEach(invitation -> {
             InvitationVo invitationVo = new InvitationVo(invitation);
             if (invitation.getHavePicture() == 1) {
@@ -94,6 +99,31 @@ public class invitationDao {
         result.setResult(list);
         result.setResultCode(ResultCode.SUCCESS_CODE);
         result.setResultMessage(ResultCode.INVITATION_SELECT_SUCCESS);
+        return result;
+    }
+
+    public Result selectInvitation(Result result, Integer invitationId) {
+        //使用optional进行判空
+        Optional<Invitation> invitation = Optional.ofNullable(invitationMapper.selectById(invitationId));
+        if (invitation.isPresent()) {
+            InvitationVo invitationVo = new InvitationVo(invitation.get());
+
+            //如果帖子的图片字段是1，代表有图片，需要再查一次图片列表
+            if (invitationVo.getInvitation().getHavePicture() == 1) {
+                QueryWrapper wrapper = new QueryWrapper();
+                wrapper.eq("i_id", invitation.get().getId());
+                List pictureList = pictureMapper.selectList(wrapper);
+                invitationVo.setPictureList(pictureList);
+            }
+
+            result.setResult(invitationVo);
+            result.setResultCode(ResultCode.SUCCESS_CODE);
+            result.setResultMessage(ResultCode.INVITATION_SELECTONE_SUCCESS);
+            return result;
+        }
+
+        result.setResultCode(ResultCode.ERROR_CODE);
+        result.setResultMessage(ResultCode.INVITATION_SELECTONE_ERROR);
         return result;
     }
 }

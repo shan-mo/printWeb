@@ -5,6 +5,7 @@ import com.paint.dao.invitationDao;
 import com.paint.pojo.PageModel;
 import com.paint.pojo.Result;
 import com.paint.pojo.po.Invitation;
+import com.paint.pojo.po.User;
 import com.paint.service.invitationService;
 import com.paint.util.exception.InvitationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,16 +38,21 @@ public class invitationServiceImpl implements invitationService {
 
     }
 
+    @Override
+    public Result getInvitation(Result result, Integer invitationId) {
+        invitationDao.selectInvitation(result, invitationId);
+        return result;
+    }
 
     @Override
-    public Result publishInvitation(Invitation invitation, MultipartFile[] pictures) {
+    public Result publishInvitation(User user, Invitation invitation, MultipartFile[] pictures) {
         Result result = null;
 
         invitation.setCreateDate(Constants.DATE_FORMAT.format(new Date()));
         invitation.setHavePicture((pictures.length == 0) ? 0 : 1);
 
         try {
-            result = invitationDao.insertInvitation(invitation, pictures);
+            result = invitationDao.insertInvitation(user, invitation, pictures);
         } catch (InvitationException e) {
             result.setResultCode(e.getErrCode());
             result.setResultMessage(e.getMessage());

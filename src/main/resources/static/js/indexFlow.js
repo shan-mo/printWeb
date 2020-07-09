@@ -32,7 +32,7 @@ layui.use('flow', function () {
                             for (i; i < resultlist.length; i = i + 1) {
                                 if (resultlist[i].invitation.havePicture == 1) {
                                     //帖子有图片
-                                    lis.push("<div class=\"message\" onclick=\"openinvitationwin()\">" +
+                                    lis.push("<div class=\"message\" id='" + resultlist[i].invitation.id + "' onclick=\"openinvitationwin(this.id)\">" +
                                         "<div class=\"messagePicture\">\n" +
                                         "<img src='" + resultlist[i].pictureList[0].url + "' alt='封面'>\n" +
                                         "</div>\n" +
@@ -43,7 +43,7 @@ layui.use('flow', function () {
                                         "</div>");
                                 } else {
                                     //帖子无图片
-                                    lis.push("<div class=\"message\" onclick=\"openinvitationwin()\" style=\"height: 15%\">\n" +
+                                    lis.push("<div class=\"message\" id='" + resultlist[i].invitation.id + "' onclick=\"openinvitationwin(this.id)\" style=\"height: 15%\">\n" +
                                         "<div class=\"messageTitle\">\n" +
                                         "<span>" + resultlist[i].invitation.title + "</span>\n" +
                                         "<br><span class=\"createTime\">" + resultlist[i].invitation.createDate + "</span>" +

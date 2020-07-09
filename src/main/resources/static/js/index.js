@@ -14,7 +14,7 @@ function openpublishwin() {
     })
 }
 
-function openinvitationwin() {
+function openinvitationwin(id) {
     layer.open({
         type: 2,
         resize: false, //静止改变窗口大小
@@ -25,7 +25,9 @@ function openinvitationwin() {
         move: false, //禁止移动弹窗
         title: false, //取消弹出层的标题
         content: "invitation",
-        end: function () {
+        success: function (layero, index) {
+            var iframe = window['layui-layer-iframe' + index];
+            iframe.child(id, index);
         }
     })
 }

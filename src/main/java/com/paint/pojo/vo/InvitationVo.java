@@ -2,10 +2,12 @@ package com.paint.pojo.vo;
 
 import com.paint.pojo.po.Invitation;
 import com.paint.pojo.po.Picture;
+import com.paint.pojo.po.User;
 
 import java.util.List;
 
 public class InvitationVo {
+    private User user;
     private Invitation invitation;
     private List<Picture> pictureList;
     private Integer pageCount;
@@ -14,7 +16,6 @@ public class InvitationVo {
 
     }
 
-
     public InvitationVo(Invitation invitation) {
         this.invitation = invitation;
     }
@@ -22,6 +23,14 @@ public class InvitationVo {
     public InvitationVo(Invitation invitation, List<Picture> pictureList) {
         this.invitation = invitation;
         this.pictureList = pictureList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Invitation getInvitation() {
@@ -52,7 +61,8 @@ public class InvitationVo {
     @Override
     public String toString() {
         return "InvitationVo{" +
-                "invitation=" + invitation +
+                "user=" + user +
+                ", invitation=" + invitation +
                 ", pictureList=" + pictureList +
                 ", pageCount=" + pageCount +
                 '}';
