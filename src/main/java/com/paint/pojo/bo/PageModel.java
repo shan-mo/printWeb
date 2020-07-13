@@ -1,4 +1,4 @@
-package com.paint.pojo;
+package com.paint.pojo.bo;
 
 public class PageModel {
     private Integer start;

@@ -5,7 +5,7 @@
         id,title,text,create_date,have_picture,star,state
     </sql>
 
-    <select id="getInvitationPageList" parameterType="com.paint.pojo.PageModel"
+    <select id="getInvitationPageList" parameterType="com.paint.pojo.bo.PageModel"
             resultType="com.paint.pojo.po.Invitation">
         select
         <include refid="allcol"/>
@@ -19,7 +19,7 @@
         ORDER BY create_date DESC limit #{start},#{pageSize};
     </select>
 
-    <select id="getInvitationCount" parameterType="com.paint.pojo.PageModel" resultType="integer">
+    <select id="getInvitationCount" parameterType="com.paint.pojo.bo.PageModel" resultType="integer">
         select
         count(*)
         from p_invitation

@@ -2,7 +2,7 @@ package com.paint;
 
 import com.paint.dao.userDao;
 import com.paint.mapper.UserMapper;
-import com.paint.pojo.Result;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.User;
 import com.paint.util.exception.UserException;
 import org.junit.jupiter.api.Test;

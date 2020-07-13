@@ -3,7 +3,7 @@ package com.paint.dao;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.paint.constants.ResultCode;
 import com.paint.mapper.UserMapper;
-import com.paint.pojo.Result;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.User;
 import com.paint.util.exception.UserException;
 import org.springframework.beans.factory.annotation.Autowired;

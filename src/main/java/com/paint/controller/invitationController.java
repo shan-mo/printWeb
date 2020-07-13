@@ -1,7 +1,7 @@
 package com.paint.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.paint.pojo.Result;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.Invitation;
 import com.paint.pojo.po.User;
 import com.paint.service.invitationService;

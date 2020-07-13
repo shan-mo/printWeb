@@ -2,8 +2,8 @@ package com.paint.serviceImpl;
 
 import com.paint.constants.Constants;
 import com.paint.dao.invitationDao;
-import com.paint.pojo.PageModel;
-import com.paint.pojo.Result;
+import com.paint.pojo.bo.PageModel;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.Invitation;
 import com.paint.pojo.po.User;
 import com.paint.service.invitationService;

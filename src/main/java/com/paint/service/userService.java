@@ -1,6 +1,6 @@
 package com.paint.service;
 
-import com.paint.pojo.Result;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.User;
 
 /**

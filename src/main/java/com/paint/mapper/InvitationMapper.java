@@ -1,7 +1,7 @@
 package com.paint.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.paint.pojo.PageModel;
+import com.paint.pojo.bo.PageModel;
 import com.paint.pojo.po.Invitation;
 
 import java.util.List;

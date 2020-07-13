@@ -2,7 +2,7 @@ package com.paint.serviceImpl;
 
 import com.paint.constants.ResultCode;
 import com.paint.dao.userDao;
-import com.paint.pojo.Result;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.User;
 import com.paint.service.userService;
 import com.paint.util.exception.UserException;

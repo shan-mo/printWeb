@@ -6,8 +6,9 @@ import com.paint.constants.ResultCode;
 import com.paint.mapper.InvitationMapper;
 import com.paint.mapper.PictureMapper;
 import com.paint.mapper.UserInvitationMapper;
-import com.paint.pojo.PageModel;
-import com.paint.pojo.Result;
+import com.paint.mapper.UserMapper;
+import com.paint.pojo.bo.PageModel;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.Invitation;
 import com.paint.pojo.po.Picture;
 import com.paint.pojo.po.User;
@@ -30,6 +31,8 @@ public class invitationDao {
     private PictureMapper pictureMapper;
     @Autowired
     private UserInvitationMapper userInvitationMapper;
+    @Autowired
+    private UserMapper userMapper;
 
     @Transactional
     public Result insertInvitation(User user, Invitation invitation, MultipartFile[] pictures) throws InvitationException {
@@ -115,6 +118,15 @@ public class invitationDao {
                 List pictureList = pictureMapper.selectList(wrapper);
                 invitationVo.setPictureList(pictureList);
             }
+
+            //获取用户-帖子关联表信息
+            QueryWrapper userinviWrapper = new QueryWrapper();
+            userinviWrapper.eq("i_id", invitationId);
+            UserInvitation userInvitation = userInvitationMapper.selectOne(userinviWrapper);
+            //获取用户信息
+            QueryWrapper userWrapper = new QueryWrapper();
+            userWrapper.eq("id", userInvitation.getuId());
+            invitationVo.setUser(userMapper.selectOne(userWrapper));
 
             result.setResult(invitationVo);
             result.setResultCode(ResultCode.SUCCESS_CODE);

@@ -25,7 +25,28 @@
     border: 1px solid rgb(204, 204, 204);
 }
 
-/* 
+.userImage{
+    float: left;
+    width: 60px;
+    height: 100%;
+}
+
+.userImage img{
+    width: 100%;
+    border-radius: 30px;
+}
+
+.userMininame{
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.userId{
+    float: left;
+    margin-left: 10px;
+}
+/*
     标题
 */
 .invitationTitle {

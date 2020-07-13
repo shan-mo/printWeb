@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -30,12 +30,12 @@
                 </div>
                 <!-- 用户信息 -->
                 <div class="userMessage">
-                    <span class="mininame">昵称</span>
-                    <span class="pid">pid</span>
+                    <span class="mininame" th:text="${session.user.miniName}"></span>
+                    <span class="pid" th:text="'pid:'+${session.user.id}"></span>
                 </div>
                 <!-- 用户栏按钮 -->
                 <div class="userButton">
-                    <button onclick="window.location.href='userCenter'" class="userCenter">用户中心</button>
+                    <button onclick="window.location.href=' userCenter'" class="userCenter">用户中心</button>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
             <div class="toTop"><i class="fas fa-angle-double-up"></i></div>
         </a>
         <div class="publish" onclick="openpublishwin()"><i class="fas fa-pencil-alt"></i></div>
-        <div class="flash"><i class="fas fa-redo-alt"></i></div>
+        <div class="flash" onclick="flash()"><i class="fas fa-redo-alt"></i></div>
     </div>
 </div>
 <!-- 帖子列表流加载js文件 -->

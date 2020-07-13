@@ -2,7 +2,7 @@ package com.paint.util;
 
 import com.paint.constants.Constants;
 import com.paint.constants.ResultCode;
-import com.paint.pojo.Result;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.Picture;
 import org.springframework.web.multipart.MultipartFile;
 

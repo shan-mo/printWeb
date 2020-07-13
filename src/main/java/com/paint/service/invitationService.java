@@ -1,12 +1,10 @@
 package com.paint.service;
 
 
-import com.paint.pojo.Result;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.Invitation;
 import com.paint.pojo.po.User;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 /**
  * 帖子相关的接口

@@ -1,11 +1,8 @@
 package com.paint.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONPObject;
 import com.paint.constants.ResultCode;
-import com.paint.pojo.Result;
+import com.paint.pojo.bo.Result;
 import com.paint.pojo.po.User;
 import com.google.code.kaptcha.Constants;
 import com.paint.service.userService;

@@ -1,4 +1,4 @@
-package com.paint.pojo;
+package com.paint.pojo.bo;
 
 public class Result {
     private String resultCode;

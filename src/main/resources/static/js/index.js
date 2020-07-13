@@ -31,3 +31,9 @@ function openinvitationwin(id) {
         }
     })
 }
+
+function flash() {
+    // $(".message").remove();
+    window.location.reload();
+}
+
